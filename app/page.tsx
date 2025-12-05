@@ -6,7 +6,9 @@ async function getProducts() {
     });
     
     if (!res.ok) {
-      throw new Error('Failed to fetch products');
+      const errorData = await res.json().catch(() => ({}));
+      console.error('API response error:', res.status, errorData);
+      throw new Error(`Failed to fetch products: ${res.status}`);
     }
     
     const result = await res.json();
