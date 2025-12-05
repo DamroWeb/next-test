@@ -1,9 +1,7 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL
-
 async function getProducts() {
   try {
-    const res = await fetch(`${API_URL}/api/public/products`, {
-       next: { revalidate: 60 } 
+    const res = await fetch('/api/products', {
+      next: { revalidate: 60 } 
     });
     
     if (!res.ok) {
