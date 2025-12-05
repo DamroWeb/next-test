@@ -1,6 +1,7 @@
 async function getProducts() {
   try {
-    const res = await fetch('/api/public/products', {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/public/products`, {
       next: { revalidate: 60 } 
     });
     
