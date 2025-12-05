@@ -1,6 +1,6 @@
 async function getProducts() {
   try {
-    const res = await fetch('/api/products', {
+    const res = await fetch('/api/public/products', {
       next: { revalidate: 60 } 
     });
     
