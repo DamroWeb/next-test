@@ -1,13 +1,13 @@
+const API_URL = process.env.API_URL || 'http://3.1.107.80:3001';
+
 async function getProducts() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/public/products`, {
-      next: { revalidate: 60 } 
+    const res = await fetch(`${API_URL}/api/public/products`, {
+      next: { revalidate: 60 }
     });
     
     if (!res.ok) {
-      const errorData = await res.json().catch(() => ({}));
-      console.error('API response error:', res.status, errorData);
+      console.error('API response error:', res.status);
       throw new Error(`Failed to fetch products: ${res.status}`);
     }
     
